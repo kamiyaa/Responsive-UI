@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans&display=swap");
+
+@font-face {
+  font-family: "Neue Haas Unica";
+  src: url("../../../public/fonts/NeueHaasUnica-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+body {
+  background: rgb(19, 19, 19);
+  color: #fff;
+  font-family: "Noto Sans", sans-serif;
+}
+
+p {
+  font-family: "Neue Haas Unica";
+  font-size: "20px";
+  line-height: "24px";
+}
+
+button {
+  background: rgb(74, 82, 255);
+  border-radius: 25px;
+  border: none;
+  width: 98px;
+  height: 34px;
+  color: white;
+  font-family: "Neue Haas Unica";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #353535;
+  font-size: 3rem;
+  color: #fff;
+  box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem,
+    rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  transition: all 500ms;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.card:hover {
+  box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em,
+    rgba(2, 8, 20, 0.08) 0px 0.175em 0.5em;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.mosaic-grid {
+  margin: 60px;
+  display: grid;
+  gap: 1rem;
+
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  /* grid-template-columns: 240px repeat(6, 1fr) 240px; */
+  grid-auto-rows: 80px;
+}
+
+/* Medium screens */
+@media screen and (min-width: 600px) {
+  .card-h-1 {
+    grid-row: span 2 / auto;
+  }
+  .card-h-2 {
+    grid-row: span 3 / auto;
+  }
+  .card-h-3 {
+    grid-row: span 4 / auto;
+  }
+
+  .card-w-1 {
+    grid-column: span 2 / auto;
+  }
+  .card-w-2 {
+    grid-column: span 3 / auto;
+  }
+  .card-w-3 {
+    grid-column: span 4 / auto;
+  }
+}
+
+.title {
+  font-size: 23px;
+  line-height: 26px;
+  padding-bottom: 30px;
+  margin: 0;
+}
+.description {
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0;
+}
