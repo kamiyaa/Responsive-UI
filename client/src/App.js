@@ -6,6 +6,8 @@ import Card from "./components/card";
 
 function App() {
   const [imageData, setImageData] = useState([]);
+  const [selectedImageUrl, setSelectedImageUrl] = useState(null);
+
 
   useEffect(() => {
     getImages().then((res) => setImageData(res));
@@ -30,6 +32,7 @@ function App() {
     }
   };
 
+
   return (
     <div className="mosaic-grid">
       <div
@@ -48,6 +51,9 @@ function App() {
             description={item?.description}
             image_url={item?.image}
             hover_color={HoverColors[parseInt(Math.random() * 8)]}
+            onClick={() => {
+              setSelectedImageUrl(item?.image);
+            }}
           />
         );
       })}
@@ -60,6 +66,39 @@ function App() {
         />
         <button onClick={handleClick}>Button</button>
       </div>
+      {selectedImageUrl &&
+        <div
+          style={{
+            position: 'fixed',
+            width: '100%',
+            height: '100%',
+            left: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            z: '50',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          }}
+          onClick={() => {
+            setSelectedImageUrl(null);
+          }}
+          >
+            <div style={{
+              padding: '2rem',
+              height: '100%',
+            }}>
+              <img
+                style={{
+                  display: 'block',
+                  height: '90%',
+                  margin: 'auto',
+                  objectFit: 'contain',
+                  duration: 300,
+                }}
+                src={selectedImageUrl} />
+            </div>
+        </div>
+      }
     </div>
   );
 }
